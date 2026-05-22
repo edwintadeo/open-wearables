@@ -5,6 +5,9 @@ from app.services.outgoing_webhooks import svix as svix_service
 
 
 def seed_webhook_event_types() -> None:
+    if not svix_service.is_enabled():
+        print("Svix disabled; skipping webhook event type registration.")
+        return
     svix_service.register_event_types()
     print("✓ Webhook event types registered with Svix.")
 

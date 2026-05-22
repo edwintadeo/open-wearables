@@ -7,19 +7,19 @@ Uses autocommit because CREATE DATABASE cannot run inside a transaction.
 
 import psycopg
 import psycopg.errors
+from psycopg.conninfo import make_conninfo
 
 from app.config import settings
 
 
 def create_svix_db() -> None:
-    dsn = (
-        f"host={settings.db_host} "
-        f"port={settings.db_port} "
-        f"dbname={settings.db_name} "
-        f"user={settings.db_user} "
-        f"password={settings.db_password.get_secret_value()}"
-    )
+    dsn = make_conninfo("", **settings.db_connection_kwargs)
     with psycopg.connect(dsn, autocommit=True) as conn:
+        exists = conn.execute("SELECT 1 FROM pg_database WHERE datname = 'svix'").fetchone()
+        if exists:
+            print("Svix database already exists, skipping.")
+            return
+
         try:
             conn.execute("CREATE DATABASE svix")
             print("✓ Created 'svix' database.")

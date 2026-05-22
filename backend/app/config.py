@@ -10,6 +10,7 @@ if TYPE_CHECKING:
 
 from pydantic import AnyHttpUrl, Field, SecretStr, ValidationInfo, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from sqlalchemy.engine import URL
 
 from app.utils.config_utils import (
     EncryptedField,
@@ -46,6 +47,7 @@ class Settings(BaseSettings):
     db_name: str = "open-wearables"
     db_user: str = "open-wearables"
     db_password: SecretStr = SecretStr("open-wearables")
+    db_instance_connection_name: str | None = None
 
     # Sentry
     SENTRY_ENABLED: bool = False
@@ -183,6 +185,7 @@ class Settings(BaseSettings):
     raw_payload_s3_endpoint_url: str | None = None  # for S3-compatible storage (e.g. Railway Object Storage)
 
     # SVIX WEBHOOK SETTINGS
+    svix_enabled: bool = True
     svix_server_url: str = "http://svix-server:8071"
     # Signing secret used by the Svix server to verify JWTs.  Must match SVIX_JWT_SECRET in docker-compose.
     svix_jwt_secret: SecretStr | None = None
@@ -266,12 +269,42 @@ class Settings(BaseSettings):
         return v
 
     @property
+    def db_socket_host(self) -> str | None:
+        if not self.db_instance_connection_name:
+            return None
+        return f"/cloudsql/{self.db_instance_connection_name}"
+
+    @property
+    def db_connection_kwargs(self) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {
+            "dbname": self.db_name,
+            "user": self.db_user,
+            "password": self.db_password.get_secret_value(),
+        }
+        if self.db_socket_host:
+            kwargs["host"] = self.db_socket_host
+        else:
+            kwargs["host"] = self.db_host
+            kwargs["port"] = self.db_port
+        return kwargs
+
+    @property
     def db_uri(self) -> str:
-        return (
-            f"postgresql+psycopg://"
-            f"{self.db_user}:{self.db_password.get_secret_value()}"
-            f"@{self.db_host}:{self.db_port}/{self.db_name}"
+        url = URL.create(
+            "postgresql+psycopg",
+            username=self.db_user,
+            password=self.db_password.get_secret_value(),
+            database=self.db_name,
         )
+        if self.db_socket_host:
+            url = url.set(query={"host": self.db_socket_host})
+        else:
+            url = url.set(host=self.db_host, port=self.db_port)
+        return url.render_as_string(hide_password=False)
+
+    @property
+    def db_uri_for_configparser(self) -> str:
+        return self.db_uri.replace("%", "%%")
 
     # 0. pytest ini_options
     # 1. environment variables
