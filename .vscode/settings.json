@@ -3,6 +3,7 @@
   "python.analysis.extraPaths": [
     "${workspaceFolder}/backend"
   ],
-  "makefile.configureOnOpen": false
+  "makefile.configureOnOpen": false,
+  "snyk.advanced.autoSelectOrganization": true
 }
 

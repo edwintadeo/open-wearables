@@ -3,13 +3,13 @@ services:
     image: postgres:18
     container_name: postgres__open-wearables
     environment:
-      POSTGRES_DB: open-wearables
-      POSTGRES_USER: open-wearables
-      POSTGRES_PASSWORD: open-wearables
+      POSTGRES_DB: ${DB_NAME:-open-wearables}
+      POSTGRES_USER: ${DB_USER:-open-wearables}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-open-wearables}
     ports:
       - "${DB_PORT:-5432}:5432"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U open-wearables -d open-wearables"]
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-open-wearables} -d ${DB_NAME:-open-wearables}"]
       interval: 5s
       timeout: 5s
       retries: 5

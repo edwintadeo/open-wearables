@@ -11,8 +11,8 @@ SUBNET="${SUBNET:-default}"
 VPC_EGRESS="${VPC_EGRESS:-private-ranges-only}"
 IMAGE="${IMAGE:-$(gcloud run services describe "${API_SERVICE_NAME}" --project="${PROJECT_ID}" --region="${REGION}" --format='value(spec.template.spec.containers[0].image)')}"
 
-COMMON_ENV="ENVIRONMENT=production,REDIS_DB=0,SVIX_ENABLED=false"
-COMMON_SECRETS="DB_INSTANCE_CONNECTION_NAME=open-wearables-db-instance-connection-name:latest,DB_NAME=open-wearables-db-name:latest,DB_USER=open-wearables-db-user:latest,DB_PASSWORD=open-wearables-db-password:latest,SECRET_KEY=open-wearables-secret-key:latest,OPEN_WEARABLES_API_KEY=open-wearables-api-key:latest,REDIS_HOST=open-wearables-redis-host:latest,REDIS_PORT=open-wearables-redis-port:latest,REDIS_PASSWORD=open-wearables-redis-password:latest"
+COMMON_ENV="^|^ENVIRONMENT=production|REDIS_DB=0|SVIX_ENABLED=false|WITHINGS_DEFAULT_SCOPE=user.info,user.metrics,user.activity,user.sleepevents|POLAR_DEFAULT_SCOPE=accesslink.read_all"
+COMMON_SECRETS="DB_INSTANCE_CONNECTION_NAME=open-wearables-db-instance-connection-name:latest,DB_NAME=open-wearables-db-name:latest,DB_USER=open-wearables-db-user:latest,DB_PASSWORD=open-wearables-db-password:latest,SECRET_KEY=open-wearables-secret-key:latest,OPEN_WEARABLES_API_KEY=open-wearables-api-key:latest,REDIS_HOST=open-wearables-redis-host:latest,REDIS_PORT=open-wearables-redis-port:latest,REDIS_PASSWORD=open-wearables-redis-password:latest,WITHINGS_CLIENT_ID=open-wearables-withings-client-id:latest,WITHINGS_CLIENT_SECRET=open-wearables-withings-client-secret:latest,POLAR_CLIENT_ID=open-wearables-polar-client-id:latest,POLAR_CLIENT_SECRET=open-wearables-polar-client-secret:latest"
 
 deploy_background_service() {
   local service_name="$1"

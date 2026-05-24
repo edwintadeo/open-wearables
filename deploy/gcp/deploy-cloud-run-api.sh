@@ -46,8 +46,8 @@ gcloud run deploy "${SERVICE_NAME}" \
   --subnet="${SUBNET}" \
   --vpc-egress="${VPC_EGRESS}" \
   "${AUTH_FLAG}" \
-  --set-env-vars="^|^ENVIRONMENT=production|API_PORT=8000|API_BASE_URL=${API_BASE_URL}|FRONTEND_URL=${FRONTEND_URL}|CORS_ORIGINS=${CORS_ORIGINS}|CORS_ALLOW_ALL=false|EMAIL_FROM_NAME=Sandtuari|REDIS_DB=0|SVIX_ENABLED=false" \
-  --set-secrets="DB_INSTANCE_CONNECTION_NAME=open-wearables-db-instance-connection-name:latest,DB_NAME=open-wearables-db-name:latest,DB_USER=open-wearables-db-user:latest,DB_PASSWORD=open-wearables-db-password:latest,SECRET_KEY=open-wearables-secret-key:latest,ADMIN_EMAIL=open-wearables-admin-email:latest,ADMIN_PASSWORD=open-wearables-admin-password:latest,OPEN_WEARABLES_API_KEY=open-wearables-api-key:latest,REDIS_HOST=open-wearables-redis-host:latest,REDIS_PORT=open-wearables-redis-port:latest,REDIS_PASSWORD=open-wearables-redis-password:latest"
+  --set-env-vars="^|^ENVIRONMENT=production|API_PORT=8000|API_BASE_URL=${API_BASE_URL}|FRONTEND_URL=${FRONTEND_URL}|CORS_ORIGINS=${CORS_ORIGINS}|CORS_ALLOW_ALL=false|EMAIL_FROM_NAME=Sandtuari|REDIS_DB=0|SVIX_ENABLED=false|WITHINGS_DEFAULT_SCOPE=user.info,user.metrics,user.activity,user.sleepevents|POLAR_DEFAULT_SCOPE=accesslink.read_all" \
+  --set-secrets="DB_INSTANCE_CONNECTION_NAME=open-wearables-db-instance-connection-name:latest,DB_NAME=open-wearables-db-name:latest,DB_USER=open-wearables-db-user:latest,DB_PASSWORD=open-wearables-db-password:latest,SECRET_KEY=open-wearables-secret-key:latest,ADMIN_EMAIL=open-wearables-admin-email:latest,ADMIN_PASSWORD=open-wearables-admin-password:latest,OPEN_WEARABLES_API_KEY=open-wearables-api-key:latest,REDIS_HOST=open-wearables-redis-host:latest,REDIS_PORT=open-wearables-redis-port:latest,REDIS_PASSWORD=open-wearables-redis-password:latest,WITHINGS_CLIENT_ID=open-wearables-withings-client-id:latest,WITHINGS_CLIENT_SECRET=open-wearables-withings-client-secret:latest,POLAR_CLIENT_ID=open-wearables-polar-client-id:latest,POLAR_CLIENT_SECRET=open-wearables-polar-client-secret:latest"
 
 if [[ "${ALLOW_UNAUTHENTICATED}" == "true" ]]; then
   gcloud run services add-iam-policy-binding "${SERVICE_NAME}" \
