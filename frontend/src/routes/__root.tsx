@@ -24,12 +24,12 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'Open Wearables Platform',
+        title: 'Sandtuari Connect',
       },
       {
         name: 'description',
         content:
-          'Unified API for wearable device data and AI-powered health insights',
+          'Panel tecnico para sincronizacion de wearables de Sandtuari',
       },
     ],
     links: [
@@ -54,40 +54,40 @@ export const Route = createRootRoute({
       // Fallback for browsers that don't support media queries
       {
         rel: 'icon',
-        href: '/favicon.ico',
+        href: '/sandtuari-mark.svg',
       },
       {
         rel: 'apple-touch-icon',
-        href: '/apple-touch-icon.png',
+        href: '/sandtuari-mark.svg',
       },
       // Favicons - Light theme (dark icons for light backgrounds)
       {
         rel: 'icon',
-        type: 'image/png',
-        sizes: '32x32',
-        href: '/favicon-light-32x32.png',
+        type: 'image/svg+xml',
+        sizes: 'any',
+        href: '/sandtuari-mark.svg',
         media: '(prefers-color-scheme: light)',
       },
       {
         rel: 'icon',
-        type: 'image/png',
-        sizes: '16x16',
-        href: '/favicon-light-16x16.png',
+        type: 'image/svg+xml',
+        sizes: 'any',
+        href: '/sandtuari-mark.svg',
         media: '(prefers-color-scheme: light)',
       },
       // Favicons - Dark theme (light icons for dark backgrounds)
       {
         rel: 'icon',
-        type: 'image/png',
-        sizes: '32x32',
-        href: '/favicon-dark-32x32.png',
+        type: 'image/svg+xml',
+        sizes: 'any',
+        href: '/sandtuari-mark.svg',
         media: '(prefers-color-scheme: dark)',
       },
       {
         rel: 'icon',
-        type: 'image/png',
-        sizes: '16x16',
-        href: '/favicon-dark-16x16.png',
+        type: 'image/svg+xml',
+        sizes: 'any',
+        href: '/sandtuari-mark.svg',
         media: '(prefers-color-scheme: dark)',
       },
     ],
@@ -99,7 +99,7 @@ export const Route = createRootRoute({
 
 function RootComponent() {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
         <HeadContent />
       </head>

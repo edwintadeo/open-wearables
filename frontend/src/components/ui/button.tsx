@@ -10,21 +10,21 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-white text-black hover:bg-zinc-200 border border-transparent',
+          'bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] hover:bg-[hsl(var(--primary-hover))] border border-transparent shadow-sm',
         destructive:
           'bg-[hsl(var(--destructive-muted)/0.1)] text-[hsl(var(--destructive-muted))] border border-red-500/30 hover:border-red-500/50 hover:shadow-[0_0_15px_hsla(350,100%,55%,0.3)]',
         'destructive-outline':
           'border border-border/50 bg-background hover:bg-card hover:border-red-500/50 hover:text-[hsl(var(--destructive-muted))] hover:shadow-[0_0_10px_hsla(350,100%,55%,0.2)]',
         outline:
-          'border border-border/50 bg-background hover:bg-card hover:border-primary/50 hover:shadow-[0_0_10px_hsla(185,100%,50%,0.2)]',
+          'border border-border/70 bg-background hover:bg-card hover:border-primary/50',
         secondary:
           'bg-muted text-foreground hover:bg-muted-foreground/40 border border-border/50',
         ghost:
-          'border border-transparent hover:border-border/50 hover:bg-card hover:text-foreground hover:shadow-[0_0_8px_hsla(185,100%,50%,0.15)]',
+          'border border-transparent hover:border-border/50 hover:bg-card hover:text-foreground',
         'ghost-faded':
-          'border border-transparent text-muted-foreground hover:border-border/50 hover:bg-card hover:text-foreground/90 hover:shadow-[0_0_8px_hsla(185,100%,50%,0.15)]',
+          'border border-transparent text-muted-foreground hover:border-border/50 hover:bg-card hover:text-foreground/90',
         link: 'text-primary underline-offset-4 hover:underline',
-        neon: 'bg-primary text-primary-foreground border border-border/50 hover:bg-primary-hover hover:shadow-[0_0_20px_hsla(185,100%,50%,0.4)] transition-all duration-300 ease-out active:scale-[0.98]',
+        neon: 'bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] border border-border/50 hover:bg-[hsl(var(--primary-hover))] transition-all duration-300 ease-out active:scale-[0.98]',
       },
       size: {
         default: 'h-10 px-4 py-2',

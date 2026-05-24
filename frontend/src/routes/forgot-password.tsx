@@ -60,7 +60,7 @@ function ForgotPasswordPage() {
               <Activity className="text-black w-4 h-4" />
             </div>
             <span className="text-sm font-medium text-white tracking-tight uppercase">
-              Open Wearables
+              Sandtuari Connect
             </span>
           </div>
 

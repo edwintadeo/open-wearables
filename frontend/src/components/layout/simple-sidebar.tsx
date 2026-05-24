@@ -55,10 +55,10 @@ export function SimpleSidebar() {
   const { logout, isLoggingOut } = useAuth();
 
   return (
-    <aside className="relative w-64 bg-black flex flex-col border-r border-border/40">
+    <aside className="relative w-64 bg-white/95 flex flex-col border-r border-border shadow-sm">
       {/* Header */}
       <div className="p-4 border-b border-border/40">
-        <img src={logotype} alt="Open Wearables" className="h-auto" />
+        <img src={logotype} alt="Sandtuari Connect" className="h-auto" />
       </div>
 
       {/* Navigation */}
@@ -73,7 +73,7 @@ export function SimpleSidebar() {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 px-3 py-2 rounded-md text-sm text-muted-foreground hover:bg-card/40 hover:text-foreground transition-all duration-200"
+                className="flex items-center gap-3 px-3 py-2 rounded-md text-sm text-muted-foreground hover:bg-muted hover:text-foreground transition-all duration-200"
               >
                 <item.icon className="h-4 w-4 text-muted-foreground" />
                 <span>{item.title}</span>
@@ -89,14 +89,14 @@ export function SimpleSidebar() {
               className={cn(
                 'flex items-center gap-3 px-3 py-2 rounded-md text-sm transition-all duration-200',
                 isActive
-                  ? 'bg-card text-foreground border-l-2 border-white -ml-[2px] pl-[calc(0.75rem+2px)]'
-                  : 'text-muted-foreground hover:bg-card/40 hover:text-foreground'
+                  ? 'bg-primary/10 text-primary border-l-2 border-primary -ml-[2px] pl-[calc(0.75rem+2px)]'
+                  : 'text-muted-foreground hover:bg-muted hover:text-foreground'
               )}
             >
               <item.icon
                 className={cn(
                   'h-4 w-4 transition-colors',
-                  isActive ? 'text-foreground' : 'text-muted-foreground'
+                  isActive ? 'text-primary' : 'text-muted-foreground'
                 )}
               />
               <span>{item.title}</span>

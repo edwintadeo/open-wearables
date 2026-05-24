@@ -1,93 +1,84 @@
 @import 'tailwindcss';
 
 /* ============================================
-   ELECTRIC NEON DESIGN SYSTEM
-   Open Wearables - 2025 Modern Redesign
+   Sandtuari clinical design system
    ============================================ */
 
 @layer base {
   :root {
-    /* === BACKGROUNDS - HIGH CONTRAST === */
-    --background: 240 10% 12%; /* #1A1A20 - Main content area - noticeably lighter */
-    --background-elevated: 245 12% 15%; /* #222230 - Elevated surfaces */
-    --foreground: 0 0% 98%; /* #FAFAFA - Primary text */
+    --background: 42 33% 96%;
+    --background-elevated: 42 30% 98%;
+    --foreground: 190 40% 18%;
 
-    --card: 248 12% 17%; /* #272735 - Card backgrounds */
-    --card-elevated: 250 12% 20%; /* #2F2F40 - Hover states on cards */
-    --card-foreground: 0 0% 98%; /* #FAFAFA */
+    --card: 0 0% 100%;
+    --card-elevated: 44 28% 94%;
+    --card-foreground: 190 40% 18%;
 
-    --popover: 248 14% 15%; /* #222230 */
-    --popover-foreground: 0 0% 98%; /* #FAFAFA */
+    --popover: 0 0% 100%;
+    --popover-foreground: 190 40% 18%;
 
-    /* === PRIMARY - NEON CYAN === */
-    --primary: 185 100% 50%; /* #00E5FF - Electric cyan */
-    --primary-hover: 185 100% 55%; /* #1AFFFF */
-    --primary-muted: 185 80% 40%; /* #14B8CC */
-    --primary-glow: 185 100% 60%; /* #33E8FF */
-    --primary-foreground: 240 15% 6%; /* #0D0D12 - Dark text on primary */
+    --primary: 42 50% 42%;
+    --primary-hover: 42 48% 36%;
+    --primary-muted: 42 38% 54%;
+    --primary-glow: 42 62% 62%;
+    --primary-foreground: 0 0% 100%;
 
-    /* === SECONDARY - NEON MAGENTA === */
-    --secondary: 315 100% 60%; /* #FF33AA */
-    --secondary-hover: 315 100% 65%; /* #FF4DB8 */
-    --secondary-muted: 315 70% 50%; /* #D93D99 */
-    --secondary-glow: 315 100% 70%; /* #FF66C2 */
-    --secondary-foreground: 0 0% 100%; /* #FFFFFF */
+    --secondary: 188 33% 33%;
+    --secondary-hover: 188 35% 27%;
+    --secondary-muted: 188 24% 46%;
+    --secondary-glow: 188 32% 58%;
+    --secondary-foreground: 0 0% 100%;
 
-    /* === ACCENT - ELECTRIC PURPLE === */
-    --accent: 270 100% 65%; /* #9933FF */
-    --accent-hover: 270 100% 70%; /* #AD4DFF */
-    --accent-muted: 270 70% 55%; /* #8A47D6 */
-    --accent-glow: 270 100% 75%; /* #C266FF */
-    --accent-foreground: 0 0% 100%; /* #FFFFFF */
+    --accent: 151 18% 45%;
+    --accent-hover: 151 20% 38%;
+    --accent-muted: 151 16% 56%;
+    --accent-glow: 151 22% 64%;
+    --accent-foreground: 0 0% 100%;
 
-    /* === MUTED/NEUTRAL === */
-    --muted: 245 12% 18%; /* #282833 - Lighter muted */
-    --muted-foreground: 240 5% 55%; /* #888890 - More readable */
-    --foreground-muted: 240 5% 75%; /* #BBBBC2 */
-    --foreground-subtle: 240 4% 40%; /* #616169 */
+    --muted: 42 26% 91%;
+    --muted-foreground: 190 12% 42%;
+    --foreground-muted: 190 18% 32%;
+    --foreground-subtle: 190 10% 52%;
 
-    /* === STATE COLORS - NEON VARIANTS === */
-    --success: 145 100% 50%; /* #00FF7F - Neon green */
-    --success-muted: 145 70% 40%; /* #1FCC6B */
-    --success-glow: 145 100% 60%; /* #33FF99 */
-    --success-foreground: 240 15% 6%; /* #0D0D12 */
+    --success: 151 42% 38%;
+    --success-muted: 151 34% 42%;
+    --success-glow: 151 42% 58%;
+    --success-foreground: 0 0% 100%;
 
-    --warning: 45 100% 55%; /* #FFCC19 - Neon yellow */
-    --warning-muted: 45 80% 45%; /* #CCAA14 */
-    --warning-glow: 45 100% 65%; /* #FFD94D */
-    --warning-foreground: 240 15% 6%; /* #0D0D12 */
+    --warning: 42 65% 48%;
+    --warning-muted: 42 52% 46%;
+    --warning-glow: 42 72% 62%;
+    --warning-foreground: 190 40% 18%;
 
-    --destructive: 350 100% 55%; /* #FF1A53 - Neon red */
-    --destructive-muted: 350 70% 45%; /* #CC2B4D */
-    --destructive-glow: 350 100% 65%; /* #FF4D75 */
-    --destructive-foreground: 0 0% 100%; /* #FFFFFF */
+    --destructive: 355 68% 46%;
+    --destructive-muted: 355 58% 50%;
+    --destructive-glow: 355 70% 62%;
+    --destructive-foreground: 0 0% 100%;
 
-    /* === BORDERS & INPUTS === */
-    --border: 245 12% 22%; /* #333340 - More visible borders */
-    --border-hover: 245 12% 30%; /* #454555 */
-    --border-glow: 185 60% 30%; /* #1F7A85 */
-    --input: 245 12% 16%; /* #242430 */
-    --ring: 185 100% 50%; /* #00E5FF */
+    --border: 42 20% 82%;
+    --border-hover: 42 22% 70%;
+    --border-glow: 42 42% 56%;
+    --input: 0 0% 100%;
+    --ring: 42 50% 42%;
 
-    /* === SIDEBAR - VERY DARK FOR HIGH CONTRAST === */
-    --sidebar: 240 25% 3%; /* #050508 - Almost black sidebar */
-    --sidebar-foreground: 0 0% 92%; /* #EBEBEB */
-    --sidebar-primary: 185 100% 50%; /* #00E5FF */
-    --sidebar-primary-foreground: 240 15% 6%; /* #0D0D12 */
-    --sidebar-accent: 248 20% 8%; /* #101018 */
-    --sidebar-accent-foreground: 0 0% 95%; /* #F2F2F2 */
-    --sidebar-border: 245 20% 10%; /* #141420 */
-    --sidebar-ring: 185 100% 50%; /* #00E5FF */
+    --sidebar: 0 0% 100%;
+    --sidebar-foreground: 190 40% 18%;
+    --sidebar-primary: 42 50% 42%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 42 26% 92%;
+    --sidebar-accent-foreground: 190 40% 18%;
+    --sidebar-border: 42 20% 82%;
+    --sidebar-ring: 42 50% 42%;
 
     /* === CHART COLORS === */
-    --chart-1: 185 100% 50%; /* Cyan */
-    --chart-2: 315 100% 60%; /* Magenta */
-    --chart-3: 270 100% 65%; /* Purple */
-    --chart-4: 145 100% 50%; /* Green */
-    --chart-5: 45 100% 55%; /* Yellow */
+    --chart-1: 42 50% 42%;
+    --chart-2: 188 33% 33%;
+    --chart-3: 151 18% 45%;
+    --chart-4: 210 28% 45%;
+    --chart-5: 355 58% 50%;
 
     /* === BORDER RADIUS === */
-    --radius: 0.75rem; /* 12px */
+    --radius: 0.5rem;
 
     /* === TRANSITIONS === */
     --duration-fast: 150ms;
@@ -135,12 +126,11 @@
    ============================================ */
 
 @layer utilities {
-  /* Grid background for login */
   .bg-grid {
     background-size: 40px 40px;
     background-image:
-      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      linear-gradient(to right, rgba(161, 127, 54, 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(161, 127, 54, 0.08) 1px, transparent 1px);
   }
 
   /* Glow effects */
