@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Withings">
+  <rect width="64" height="64" rx="14" fill="#111827"/>
+  <circle cx="32" cy="32" r="21" fill="#00A6B4"/>
+  <path fill="#fff" d="M18 22h5l4 17 4-17h4l4 17 4-17h5l-6.5 22h-4.8L33 28.6 29.3 44h-4.8L18 22Z"/>
+</svg>

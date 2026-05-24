@@ -71,6 +71,7 @@ def make_authenticated_request(
     params: dict[str, Any] | None = None,
     headers: dict[str, str] | None = None,
     json_data: dict[str, Any] | None = None,
+    form_data: dict[str, Any] | None = None,
     expect_json: bool = True,
 ) -> Any:
     """Make authenticated request to provider API.
@@ -89,6 +90,7 @@ def make_authenticated_request(
         params: Query parameters
         headers: Additional headers (Authorization header will be added automatically)
         json_data: JSON body for POST/PUT requests
+        form_data: Form-encoded body for APIs that expect application/x-www-form-urlencoded
         expect_json: Whether to parse response as JSON (default True).
             Set to False for endpoints that return empty bodies (e.g., 202 Accepted).
 
@@ -120,6 +122,7 @@ def make_authenticated_request(
                 headers=request_headers,
                 params=params or {},
                 json=json_data,
+                data=form_data,
                 timeout=30.0,
             )
 

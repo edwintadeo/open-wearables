@@ -1,0 +1,52 @@
+---
+title: "Withings API Integration"
+description: "Configure Withings OAuth and pull-based body composition, blood pressure, heart rate, SpO2, and daily activity sync."
+---
+
+## Status
+
+Withings is prepared as a cloud OAuth provider using the native Open Wearables provider architecture.
+
+This integration is intentionally pull-based for the first Sandtuari phase. It does not depend on the legacy Sandtuari Firestore, FHIR, APNs, or custom Cloud Functions files.
+
+## Environment Variables
+
+Set these values in the Open Wearables runtime:
+
+```bash
+WITHINGS_CLIENT_ID=...
+WITHINGS_CLIENT_SECRET=...
+WITHINGS_DEFAULT_SCOPE=user.metrics,user.activity,user.sleepevents
+API_BASE_URL=https://wearables.sandtuari.fit
+```
+
+The OAuth redirect URI is derived from `API_BASE_URL`:
+
+```text
+https://wearables.sandtuari.fit/api/v1/oauth/withings/callback
+```
+
+Register that callback in the Withings developer application.
+
+## Data Synced
+
+The first implementation focuses on metrics that are useful for Sandtuari's clinical/well-aging workflow:
+
+| Category | Open Wearables series |
+| --- | --- |
+| Body composition | `weight`, `lean_body_mass`, `body_fat_percentage`, `body_fat_mass`, `skeletal_muscle_mass`, `body_temperature`, `skin_temperature` |
+| Cardiovascular | `blood_pressure_systolic`, `blood_pressure_diastolic`, `heart_rate` |
+| Respiratory | `oxygen_saturation` |
+| Daily activity | `steps`, `distance_walking_running`, `energy` |
+| Sleep | Sleep sessions, sleep duration, sleep stages summary where exposed by Withings, and `sleep_score` |
+
+## Not Included Yet
+
+The legacy files supplied by Sandtuari include Apple Health, Health Connect, Watch/APNs, Firestore, and FHIR-specific logic. Those are not part of this Withings provider preparation.
+
+Next iterations can add:
+
+- Withings webhooks/subscriptions if needed.
+- Users connected before `user.sleepevents` was enabled must reconnect Withings before sleep can sync.
+- Device-level metadata mapping.
+- Sandtuari UI activation after credentials are stored in Secret Manager and the deployed Open Wearables service is updated.

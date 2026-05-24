@@ -10,6 +10,7 @@ from app.services.providers.samsung.strategy import SamsungStrategy
 from app.services.providers.strava.strategy import StravaStrategy
 from app.services.providers.suunto.strategy import SuuntoStrategy
 from app.services.providers.ultrahuman.strategy import UltrahumanStrategy
+from app.services.providers.withings.strategy import WithingsStrategy
 from app.services.providers.whoop.strategy import WhoopStrategy
 
 
@@ -39,6 +40,8 @@ class ProviderFactory:
                 return StravaStrategy()
             case ProviderName.FITBIT.value:
                 return FitbitStrategy()
+            case ProviderName.WITHINGS.value:
+                return WithingsStrategy()
             case ProviderName.ULTRAHUMAN.value:
                 return UltrahumanStrategy()
             case _:

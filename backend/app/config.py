@@ -133,6 +133,12 @@ class Settings(BaseSettings):
     fitbit_redirect_uri: str | None = None  # Deprecated: use API_BASE_URL
     fitbit_default_scope: str = "activity heartrate sleep profile"
 
+    # WITHINGS OAUTH SETTINGS
+    withings_client_id: str | None = None
+    withings_client_secret: SecretStr | None = None
+    withings_redirect_uri: str | None = None  # Deprecated: use API_BASE_URL
+    withings_default_scope: str = "user.info,user.metrics,user.activity,user.sleepevents"
+
     # OURA OAUTH SETTINGS
     oura_client_id: str | None = None
     oura_client_secret: SecretStr | None = None
